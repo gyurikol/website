@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+// measure performance
 import reportWebVitals from './reportWebVitals';
+// views
+import AppTest from './views/test/App';
+import LandingPage from './views/landingPage/landingPage';
+// styles
+import 'assets/css/index.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Switch>
+      <Switch>
+
+        <Route path="/test" render={(props) => <AppTest {...props} />} />
+        <Route path="/index" render={(props) => <LandingPage {...props} />} />
+
+        <Redirect to="/index" />
+        <Redirect from="/" to="/index" />
+
+      </Switch>
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
